@@ -6,9 +6,19 @@
     <servlet>
         <servlet-name>MyServlet</servlet-name>
         <servlet-class>lk.ijse.MyServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>MyServlet</servlet-name>
         <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>TestServelet</servlet-name>
+        <servlet-class>lk.ijse.TestServelet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestServelet</servlet-name>
+        <url-pattern>/test2</url-pattern>
     </servlet-mapping>
 </web-app>

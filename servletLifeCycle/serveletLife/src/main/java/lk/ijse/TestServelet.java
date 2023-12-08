@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class MyServlet extends HttpServlet {
+public class TestServelet extends HttpServlet {
 //    static {
 //        System.out.println("MyServlet class is loaded");
 //    }
-    public MyServlet(){
-        System.out.println("MyServlet() : constructor : MyServlet");
+    public TestServelet(){
+        System.out.println("MyServlet() : constructor : TestServelet");
     }
 //    @Override
 //    public void init() throws ServletException {
@@ -23,12 +23,8 @@ public class MyServlet extends HttpServlet {
 //        System.out.println("init(ServeletConfig) : method");
 //        super.init(config);
 //    }
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("doGet() : method : MyServlet");
-    }
 //    @Override
-//    public void destroy(){
-//        System.out.println("destroy() : method");
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        System.out.println("doGet() : method : TestServelet");
 //    }
 }
