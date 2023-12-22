@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "Servlet2", value = "*.html")
+@WebServlet(name = "Servlet3", value = "*.html")
 public class ServletExtensionMapping extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
