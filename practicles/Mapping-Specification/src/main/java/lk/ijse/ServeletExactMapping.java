@@ -14,9 +14,4 @@ public class ServeletExactMapping extends HttpServlet {
         out.println("<h1>Hello World</h1>");
 
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }
