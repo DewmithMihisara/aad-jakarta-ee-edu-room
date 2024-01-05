@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="java-ee-new:war">
+    <output-path>$PROJECT_DIR$/first/java-ee-new/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>java-ee-new</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="java-ee-new-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="java-ee-new:war exploded" />
+    </root>
+  </artifact>
+</component>

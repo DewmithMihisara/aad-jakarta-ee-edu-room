@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="servlet-life-cycle:war">
+    <output-path>$PROJECT_DIR$/resourses/java-ee/servlet-life-cycle/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>servlet-life-cycle</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="servlet-life-cycle-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="servlet-life-cycle:war exploded" />
+    </root>
+  </artifact>
+</component>

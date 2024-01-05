@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/annotation/annotation" />
+    <file type="web" url="file://$PROJECT_DIR$/first/java-ee-new" />
+    <file type="web" url="file://$PROJECT_DIR$/practicles/Mapping-Specification" />
+    <file type="web" url="file://$PROJECT_DIR$/resourses/java-ee/hello-java-ee" />
+    <file type="web" url="file://$PROJECT_DIR$/resourses/java-ee/hello-java-ee2" />
+    <file type="web" url="file://$PROJECT_DIR$/resourses/java-ee/hello-java-ee3" />
+    <file type="web" url="file://$PROJECT_DIR$/resourses/java-ee/helloproject" />
+    <file type="web" url="file://$PROJECT_DIR$/resourses/java-ee/helloServlet" />
+    <file type="web" url="file://$PROJECT_DIR$/resourses/java-ee/servlet-life-cycle" />
+    <file type="web" url="file://$PROJECT_DIR$/second/hello-java-ee" />
+    <file type="web" url="file://$PROJECT_DIR$/servletLifeCycle/serveletLife" />
+    <file type="web" url="file://$PROJECT_DIR$/third/helloServlet" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/first/java-ee-new/pom.xml" />
+        <option value="$PROJECT_DIR$/third/helloServlet/pom.xml" />
+        <option value="$PROJECT_DIR$/second/hello-java-ee/pom.xml" />
+        <option value="$PROJECT_DIR$/resourses/java-ee/helloproject/pom.xml" />
+        <option value="$PROJECT_DIR$/resourses/java-ee/helloServlet/pom.xml" />
+        <option value="$PROJECT_DIR$/resourses/java-ee/hello-java-ee/pom.xml" />
+        <option value="$PROJECT_DIR$/resourses/java-ee/hello-java-ee2/pom.xml" />
+        <option value="$PROJECT_DIR$/resourses/java-ee/hello-java-ee3/pom.xml" />
+        <option value="$PROJECT_DIR$/resourses/java-ee/servlet-life-cycle/pom.xml" />
+        <option value="$PROJECT_DIR$/annotation/annotation/pom.xml" />
+        <option value="$PROJECT_DIR$/practicles/Mapping-Specification/pom.xml" />
+        <option value="$PROJECT_DIR$/servletLifeCycle/serveletLife/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="19" project-jdk-type="JavaSDK" />
+</project>

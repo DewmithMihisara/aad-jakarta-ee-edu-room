@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Mapping-Specification:war">
+    <output-path>$PROJECT_DIR$/practicles/Mapping-Specification/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Mapping-Specification</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Mapping-Specification-1.0.war">
+      <element id="artifact" artifact-name="Mapping-Specification:war exploded" />
+    </root>
+  </artifact>
+</component>

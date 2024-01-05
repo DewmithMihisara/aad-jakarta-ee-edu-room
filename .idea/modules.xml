@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/practicles/Mapping-Specification/Mapping-Specification.iml" filepath="$PROJECT_DIR$/practicles/Mapping-Specification/Mapping-Specification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/aad-lec.iml" filepath="$PROJECT_DIR$/.idea/aad-lec.iml" />
+      <module fileurl="file://$PROJECT_DIR$/annotation/annotation/annotation.iml" filepath="$PROJECT_DIR$/annotation/annotation/annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/second/hello-java-ee/hello-java-ee.iml" filepath="$PROJECT_DIR$/second/hello-java-ee/hello-java-ee.iml" />
+      <module fileurl="file://$PROJECT_DIR$/resourses/java-ee/hello-java-ee/hello-java-ee (1).iml" filepath="$PROJECT_DIR$/resourses/java-ee/hello-java-ee/hello-java-ee (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/resourses/java-ee/hello-java-ee2/hello-java-ee2.iml" filepath="$PROJECT_DIR$/resourses/java-ee/hello-java-ee2/hello-java-ee2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/resourses/java-ee/hello-java-ee3/hello-java-ee3.iml" filepath="$PROJECT_DIR$/resourses/java-ee/hello-java-ee3/hello-java-ee3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/third/helloServlet/helloServlet.iml" filepath="$PROJECT_DIR$/third/helloServlet/helloServlet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/resourses/java-ee/helloServlet/helloServlet (1) (lk.ijse.gdse66).iml" filepath="$PROJECT_DIR$/resourses/java-ee/helloServlet/helloServlet (1) (lk.ijse.gdse66).iml" />
+      <module fileurl="file://$PROJECT_DIR$/resourses/java-ee/helloproject/helloproject.iml" filepath="$PROJECT_DIR$/resourses/java-ee/helloproject/helloproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/first/java-ee-new/java-ee-new.iml" filepath="$PROJECT_DIR$/first/java-ee-new/java-ee-new.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servletLifeCycle/serveletLife/serveletLife.iml" filepath="$PROJECT_DIR$/servletLifeCycle/serveletLife/serveletLife.iml" />
+      <module fileurl="file://$PROJECT_DIR$/resourses/java-ee/servlet-life-cycle/servlet-life-cycle.iml" filepath="$PROJECT_DIR$/resourses/java-ee/servlet-life-cycle/servlet-life-cycle.iml" />
+    </modules>
+  </component>
+</project>

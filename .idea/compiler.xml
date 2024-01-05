@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="annotation" />
+        <module name="helloServlet (1) (lk.ijse.gdse66)" />
+        <module name="java-ee-new" />
+        <module name="helloproject" />
+        <module name="servlet-life-cycle" />
+        <module name="serveletLife" />
+        <module name="hello-java-ee3" />
+        <module name="hello-java-ee2" />
+        <module name="helloServlet" />
+        <module name="Mapping-Specification" />
+        <module name="hello-java-ee (1)" />
+        <module name="hello-java-ee" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="annotation" target="1.8" />
+      <module name="hello-java-ee" target="11" />
+      <module name="hello-java-ee (1)" target="11" />
+      <module name="hello-java-ee2" target="11" />
+      <module name="hello-java-ee3" target="1.8" />
+      <module name="helloproject" target="11" />
+      <module name="helloServlet" target="11" />
+      <module name="helloServlet (1) (lk.ijse.gdse66)" target="11" />
+      <module name="java-ee-new" target="17" />
+      <module name="Mapping-Specification" target="1.8" />
+      <module name="serveletLife" target="1.8" />
+      <module name="servlet-life-cycle" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

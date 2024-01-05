@@ -1,0 +1,43 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+dev{
+    width: 25%;
+    height: 80%;
+    margin: auto;
+    border: black solid 2px;
+    border-radius: 10%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    font-size: 2.5em;
+}
+label{
+    padding: 10px 0px;
+}
+input{
+    height: 40px;
+    border-radius: 10px;
+    font-size: 1em;
+}
+button{
+
+    margin-top: 30px;
+    height: 40px;
+    border-radius: 10px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
