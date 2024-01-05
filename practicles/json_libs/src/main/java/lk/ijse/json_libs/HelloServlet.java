@@ -1,4 +1,4 @@
-package lk.ijse.json_libraries;
+package lk.ijse.json_libs;
 
 import java.io.*;
 
