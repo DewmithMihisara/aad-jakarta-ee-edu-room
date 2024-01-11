@@ -2,6 +2,10 @@ package lk.ijse.management;
 
 import com.mysql.cj.xdevapi.JsonArray;
 import com.mysql.cj.xdevapi.JsonString;
+import jakarta.json.Json;
+import jakarta.json.JsonArrayBuilder;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonObjectBuilder;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -42,16 +46,21 @@ public class CustomerServlet extends HttpServlet {
             connection = DriverManager.getConnection(url, username, password);
             PreparedStatement stm = connection.prepareStatement("SELECT * FROM customer");
             ResultSet resultSet = stm.executeQuery();
-            String jsonArray = "";
+            JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
             while (resultSet.next()) {
-                System.out.println("id : " + resultSet.getString(1));
-                System.out.println("name : " + resultSet.getString(2));
-                System.out.println("address : " + resultSet.getString(3));
-                String jsonObj="{\"id\":\""+resultSet.getString(1)+"\",\"name\":\""+resultSet.getString(2)+"\",\"address\":\""+resultSet.getString(3)+"\"}";
-                jsonArray += jsonObj + ",";
+                String id = resultSet.getString("id");
+                String name = resultSet.getString("name");
+                String address = resultSet.getString("address");
+
+                JsonObjectBuilder builder = Json.createObjectBuilder();
+                builder.add("id",id);
+                builder.add("name",name);
+                builder.add("address",address);
+                JsonObject build = builder.build();
+                arrayBuilder.add(build);
             }
-            jsonArray = "[" + jsonArray.substring(0, jsonArray.length() - 1) + "]";
-            writer.write(jsonArray);
+
+            resp.getWriter().write(arrayBuilder.build().toString());
             resp.setContentType("application/json");
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
