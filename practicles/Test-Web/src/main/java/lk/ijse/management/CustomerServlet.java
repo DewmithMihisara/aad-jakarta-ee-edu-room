@@ -1,11 +1,6 @@
 package lk.ijse.management;
 
-import com.mysql.cj.xdevapi.JsonArray;
-import com.mysql.cj.xdevapi.JsonString;
-import jakarta.json.Json;
-import jakarta.json.JsonArrayBuilder;
-import jakarta.json.JsonObject;
-import jakarta.json.JsonObjectBuilder;
+import jakarta.json.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -30,7 +25,6 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        /*ServletConfig is used to get configuration information such as database url, mysql username and password*/
         ServletConfig sc = getServletConfig();
         username = sc.getInitParameter("username");
         password = sc.getInitParameter("password");
@@ -70,15 +64,13 @@ public class CustomerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection connection = null;
+        JsonReader reader = Json.createReader(req.getReader());
+        JsonObject jsonObject = reader.readObject();
 
-        /*catch request parameter as a String*/
-        String id = req.getParameter("cusId");
-        String name = req.getParameter("cusName");
-        String address = req.getParameter("cusAdd");
+        String id = jsonObject.getString("id");
+        String name = jsonObject.getString("name");
+        String address = jsonObject.getString("address");
 
-        System.out.printf("cusId=%s, cusName=%s, cusAdd=%s\n", id, name, address);
-
-        /*create a database connection and save data in database*/
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, username, password);
@@ -104,19 +96,67 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("cusId");
-        String name = req.getParameter("cusName");
-        String address = req.getParameter("cusAdd");
+        Connection connection = null;
+        JsonReader reader = Json.createReader(req.getReader());
+        JsonObject jsonObject = reader.readObject();
 
-        System.out.printf("cusId=%s, cusName=%s, cusAdd=%s\n", id, name, address);
+        String id = jsonObject.getString("id");
+        String name = jsonObject.getString("name");
+        String address = jsonObject.getString("address");
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(url, username, password);
+            PreparedStatement stm = connection.prepareStatement("UPDATE customer SET name=?, address=? WHERE id=?");
+
+            stm.setString(1, name);
+            stm.setString(2, address);
+            stm.setString(3, id);
+
+            stm.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+            throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("cusId");
-        String name = req.getParameter("cusName");
-        String address = req.getParameter("cusAdd");
+        Connection connection = null;
 
-        System.out.printf("cusId=%s, cusName=%s, cusAdd=%s\n", id, name, address);
+        JsonReader reader = Json.createReader(req.getReader());
+        JsonObject jsonObject = reader.readObject();
+
+        String id = jsonObject.getString("id");
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(url, username, password);
+            PreparedStatement stm = connection.prepareStatement("DELETE FROM customer WHERE id=?");
+
+            stm.setString(1, id);
+
+            stm.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+            throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 }
