@@ -16,6 +16,8 @@ import java.util.ArrayList;
 public class JsonBindServelet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+//        ===========serialization================
         Student student = new Student("S001", "Kamal", 23);
         Student student1 = new Student("S002", "Nimal", 24);
 
@@ -33,5 +35,26 @@ public class JsonBindServelet extends HttpServlet {
 //        resp.getWriter().write(json);
 
         jsonb.toJson(students, resp.getWriter());
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+////        ===========deserialization================
+//        Jsonb jsonb = JsonbBuilder.create();
+//        Student student = jsonb.fromJson(req.getReader(), Student.class);
+//        System.out.println(student);
+
+//        Jsonb jsonb = JsonbBuilder.create();
+//        ArrayList<Student> students = jsonb.fromJson(req.getReader(), new ArrayList<Student>(){}.getClass().getGenericSuperclass());
+//        System.out.println(students);
+
+//        ArrayList student = JsonbBuilder.create().fromJson(req.getReader(), ArrayList.class);
+//        System.out.println(student);
+
+        Jsonb jsonb = JsonbBuilder.create();
+        Student[] student = jsonb.fromJson(req.getReader(), Student[].class);
+        for (Student student1 : student) {
+            System.out.println(student1);
+        }
     }
 }
