@@ -63,35 +63,78 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection connection = null;
+
+//        ==============this for save data=================
+
+
+//        Connection connection = null;
+//        JsonReader reader = Json.createReader(req.getReader());
+//        JsonObject jsonObject = reader.readObject();
+//
+//        String id = jsonObject.getString("id");
+//        String name = jsonObject.getString("name");
+//        String address = jsonObject.getString("address");
+//
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            connection = DriverManager.getConnection(url, username, password);
+//            PreparedStatement stm = connection.prepareStatement("INSERT INTO customer(id, name, address) VALUES (?,?,?)");
+//
+//            stm.setString(1, id);
+//            stm.setString(2, name);
+//            stm.setString(3, address);
+//
+//            stm.executeUpdate();
+//        } catch (ClassNotFoundException | SQLException e) {
+//            throw new RuntimeException(e);
+//        } finally {
+//            if (connection != null) {
+//                try {
+//                    connection.close();
+//                } catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//        }
+
+//        ===========how to get data from json object example================
+
+//        {
+//                "id": "C001",
+//                "name": "Kasun",
+//                "address": {
+//                    "no": 123,
+//                    "street": "Galle Road",
+//                    "city": "Colombo"
+//                },
+//                "cntact": ["077-1234567", "071-1234567"]
+//        }
+
+
+
         JsonReader reader = Json.createReader(req.getReader());
         JsonObject jsonObject = reader.readObject();
+        System.out.println(jsonObject);
 
         String id = jsonObject.getString("id");
         String name = jsonObject.getString("name");
-        String address = jsonObject.getString("address");
+        JsonObject addressJsonObj = jsonObject.getJsonObject("address");
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(url, username, password);
-            PreparedStatement stm = connection.prepareStatement("INSERT INTO customer(id, name, address) VALUES (?,?,?)");
+        int no = addressJsonObj.getInt("no");
+        String street = addressJsonObj.getString("street");
+        String city = addressJsonObj.getString("city");
 
-            stm.setString(1, id);
-            stm.setString(2, name);
-            stm.setString(3, address);
+        JsonArray cntactJsonArray = jsonObject.getJsonArray("cntact");
+        String firstContact = cntactJsonArray.getString(0);
+        String secondContact = cntactJsonArray.getString(1);
 
-            stm.executeUpdate();
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
+        System.out.println("id: "+id);
+        System.out.println("name: "+name);
+        System.out.println("no: "+no);
+        System.out.println("street: "+street);
+        System.out.println("city: "+city);
+        System.out.println("firstContact: "+firstContact);
+        System.out.println("secondContact: "+secondContact);
     }
 
     @Override
