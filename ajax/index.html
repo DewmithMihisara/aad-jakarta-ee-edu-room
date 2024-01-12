@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" lang="en>
-<head>
-    <meta charset="UTF-8">
-    <title>Hello-Ajax</title>
-</head>
-<body>
-<h1>Hello-Ajax</h1>
-<p>Let's implement AJAX with XMLHttpRequest object</p>
-<button type="button" id="btn">Click Me</button>
-<script src="js/jquery-3.7.1.min.js"></script>
-<script>
-    
-</script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello-Ajax</title>
+    </head>
+    <body>
+        <h1>Hello-Ajax</h1>
+        <p>Let's implement AJAX with XMLHttpRequest object</p>
+        <button type="button" id="btn">Click Me</button>
+
+        <script src="js/jquery-3.7.1.min.js"></script>
+        <script>
+            let xml=new XMLHttpRequest();
+            console.log(xml.readyState,"After creating xmlHttpRequest object");
+
+            xml.open("GET","data/data.json");
+            console.log(xml.readyState,"After opening request");
+
+            xml.addEventListener("readystatechange",function(){
+                console.log(xml.readyState,"After calling readystatechange event");
+                if(xml.readyState===4){
+                    // console.log(xml.readyState,"After calling readystatechange event");
+                    console.log(xml.responseText);
+                }
+            });
+
+            xml.send();
+
+        </script>
+    </body>
 </html>
