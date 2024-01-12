@@ -7,6 +7,7 @@
     <body>
         <h1>Hello-Ajax</h1>
         <p>Let's implement AJAX with XMLHttpRequest object</p>
+        <h1 id="sample"></h1>
         <button type="button" id="btn">Click Me</button>
 
         <script src="js/jquery-3.7.1.min.js"></script>
@@ -17,11 +18,15 @@
             xml.open("GET","data/data.json");
             console.log(xml.readyState,"After opening request");
 
-            xml.addEventListener("readystatechange",function(){
+            $("#btn").click(function (){
                 console.log(xml.readyState,"After calling readystatechange event");
-                if(xml.readyState===4){
+                if(xml.readyState===4 && xml.status===200){
                     // console.log(xml.readyState,"After calling readystatechange event");
                     console.log(xml.responseText);
+
+                    let division=$("<div></div>");
+                    division.text(xml.responseText);
+                    $("body").append(division);
                 }
             });
 
