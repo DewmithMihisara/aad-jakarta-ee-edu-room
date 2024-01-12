@@ -33,32 +33,60 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Writer writer = resp.getWriter();
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(url, username, password);
-            PreparedStatement stm = connection.prepareStatement("SELECT * FROM customer");
-            ResultSet resultSet = stm.executeQuery();
-            JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-            while (resultSet.next()) {
-                String id = resultSet.getString("id");
-                String name = resultSet.getString("name");
-                String address = resultSet.getString("address");
 
-                JsonObjectBuilder builder = Json.createObjectBuilder();
-                builder.add("id",id);
-                builder.add("name",name);
-                builder.add("address",address);
-                JsonObject build = builder.build();
-                arrayBuilder.add(build);
-            }
+//        ==================this for get data=================
 
-            resp.getWriter().write(arrayBuilder.build().toString());
-            resp.setContentType("application/json");
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
-        }
+//        Writer writer = resp.getWriter();
+//        Connection connection = null;
+//        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            connection = DriverManager.getConnection(url, username, password);
+//            PreparedStatement stm = connection.prepareStatement("SELECT * FROM customer");
+//            ResultSet resultSet = stm.executeQuery();
+//            JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+//            while (resultSet.next()) {
+//                String id = resultSet.getString("id");
+//                String name = resultSet.getString("name");
+//                String address = resultSet.getString("address");
+//
+//                JsonObjectBuilder builder = Json.createObjectBuilder();
+//                builder.add("id",id);
+//                builder.add("name",name);
+//                builder.add("address",address);
+//                JsonObject build = builder.build();
+//                arrayBuilder.add(build);
+//            }
+//
+//            resp.getWriter().write(arrayBuilder.build().toString());
+//            resp.setContentType("application/json");
+//        } catch (ClassNotFoundException | SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+
+//        =======================how to send data to client example======================
+
+        JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
+
+        objectBuilder.add("id","C001");
+        objectBuilder.add("name","Kasun");
+
+        JsonObjectBuilder addressBuilder = Json.createObjectBuilder();
+        addressBuilder.add("no",123);
+        addressBuilder.add("street","Galle Road");
+        addressBuilder.add("city","Colombo");
+
+        objectBuilder.add("address",addressBuilder);
+
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+        arrayBuilder.add("077-1234567");
+        arrayBuilder.add("071-1234567");
+
+        objectBuilder.add("cntact",arrayBuilder);
+
+        JsonObject build = objectBuilder.build();
+        resp.getWriter().write(build.toString());
+
+
     }
 
     @Override
@@ -67,35 +95,35 @@ public class CustomerServlet extends HttpServlet {
 //        ==============this for save data=================
 
 
-//        Connection connection = null;
-//        JsonReader reader = Json.createReader(req.getReader());
-//        JsonObject jsonObject = reader.readObject();
-//
-//        String id = jsonObject.getString("id");
-//        String name = jsonObject.getString("name");
-//        String address = jsonObject.getString("address");
-//
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            connection = DriverManager.getConnection(url, username, password);
-//            PreparedStatement stm = connection.prepareStatement("INSERT INTO customer(id, name, address) VALUES (?,?,?)");
-//
-//            stm.setString(1, id);
-//            stm.setString(2, name);
-//            stm.setString(3, address);
-//
-//            stm.executeUpdate();
-//        } catch (ClassNotFoundException | SQLException e) {
-//            throw new RuntimeException(e);
-//        } finally {
-//            if (connection != null) {
-//                try {
-//                    connection.close();
-//                } catch (SQLException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//        }
+        Connection connection = null;
+        JsonReader reader = Json.createReader(req.getReader());
+        JsonObject jsonObject = reader.readObject();
+
+        String id = jsonObject.getString("id");
+        String name = jsonObject.getString("name");
+        String address = jsonObject.getString("address");
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(url, username, password);
+            PreparedStatement stm = connection.prepareStatement("INSERT INTO customer(id, name, address) VALUES (?,?,?)");
+
+            stm.setString(1, id);
+            stm.setString(2, name);
+            stm.setString(3, address);
+
+            stm.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
 
 //        ===========how to get data from json object example================
 
@@ -112,29 +140,29 @@ public class CustomerServlet extends HttpServlet {
 
 
 
-        JsonReader reader = Json.createReader(req.getReader());
-        JsonObject jsonObject = reader.readObject();
-        System.out.println(jsonObject);
-
-        String id = jsonObject.getString("id");
-        String name = jsonObject.getString("name");
-        JsonObject addressJsonObj = jsonObject.getJsonObject("address");
-
-        int no = addressJsonObj.getInt("no");
-        String street = addressJsonObj.getString("street");
-        String city = addressJsonObj.getString("city");
-
-        JsonArray cntactJsonArray = jsonObject.getJsonArray("cntact");
-        String firstContact = cntactJsonArray.getString(0);
-        String secondContact = cntactJsonArray.getString(1);
-
-        System.out.println("id: "+id);
-        System.out.println("name: "+name);
-        System.out.println("no: "+no);
-        System.out.println("street: "+street);
-        System.out.println("city: "+city);
-        System.out.println("firstContact: "+firstContact);
-        System.out.println("secondContact: "+secondContact);
+//        JsonReader reader = Json.createReader(req.getReader());
+//        JsonObject jsonObject = reader.readObject();
+//        System.out.println(jsonObject);
+//
+//        String id = jsonObject.getString("id");
+//        String name = jsonObject.getString("name");
+//        JsonObject addressJsonObj = jsonObject.getJsonObject("address");
+//
+//        int no = addressJsonObj.getInt("no");
+//        String street = addressJsonObj.getString("street");
+//        String city = addressJsonObj.getString("city");
+//
+//        JsonArray cntactJsonArray = jsonObject.getJsonArray("cntact");
+//        String firstContact = cntactJsonArray.getString(0);
+//        String secondContact = cntactJsonArray.getString(1);
+//
+//        System.out.println("id: "+id);
+//        System.out.println("name: "+name);
+//        System.out.println("no: "+no);
+//        System.out.println("street: "+street);
+//        System.out.println("city: "+city);
+//        System.out.println("firstContact: "+firstContact);
+//        System.out.println("secondContact: "+secondContact);
     }
 
     @Override
