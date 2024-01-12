@@ -64,8 +64,8 @@ public class CustomerServlet extends HttpServlet {
 
 //            resp.getWriter().write(arrayBuilder.build().toString());
             Jsonb jsonb = JsonbBuilder.create();
-            jsonb.toJson(customerDTOArrayList, resp.getWriter());
             resp.setContentType("application/json");
+            jsonb.toJson(customerDTOArrayList, resp.getWriter());
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
@@ -113,6 +113,14 @@ public class CustomerServlet extends HttpServlet {
         Jsonb jsonb = JsonbBuilder.create();
         CustomerDTO customerDTO = jsonb.fromJson(req.getReader(), CustomerDTO.class);
 
+        if (customerDTO.getId() == null || customerDTO.getName() == null || customerDTO.getAddress() == null) {
+            resp.getWriter().write("id, name, address is required");
+        }else if (!customerDTO.getId().matches("C\\d{3}") && customerDTO.getName().matches("[A-Za-z ]+") && customerDTO.getAddress().matches("[A-Za-z0-9 ,]+")) {
+            resp.getWriter().write("id, name, address is invalid");
+        }else {
+            resp.getWriter().write("id, name, address is valid" + HttpServletResponse.SC_CREATED);
+        }
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, username, password);
@@ -125,7 +133,13 @@ public class CustomerServlet extends HttpServlet {
             stm.setString(2, customerDTO.getName());
             stm.setString(3, customerDTO.getAddress());
 
-            stm.executeUpdate();
+            int i = stm.executeUpdate();
+
+            if (i > 0) {
+                resp.setStatus(HttpServletResponse.SC_CREATED);
+            }else {
+                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -191,6 +205,13 @@ public class CustomerServlet extends HttpServlet {
         Jsonb jsonb = JsonbBuilder.create();
         CustomerDTO customerDTO = jsonb.fromJson(req.getReader(), CustomerDTO.class);
 
+        if (customerDTO.getId() == null || customerDTO.getName() == null || customerDTO.getAddress() == null) {
+            resp.getWriter().write("id, name, address is required");
+        }else if (!customerDTO.getId().matches("C\\d{3}") && customerDTO.getName().matches("[A-Za-z ]+") && customerDTO.getAddress().matches("[A-Za-z0-9 ,]+")) {
+            resp.getWriter().write("id, name, address is invalid");
+        }else {
+            resp.getWriter().write("id, name, address is valid"+ HttpServletResponse.SC_CREATED);
+        }
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, username, password);
@@ -203,7 +224,12 @@ public class CustomerServlet extends HttpServlet {
             stm.setString(2, customerDTO.getAddress());
             stm.setString(3, customerDTO.getId());
 
-            stm.executeUpdate();
+            int i = stm.executeUpdate();
+            if (i > 0) {
+                resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+            }else {
+                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
             throw new RuntimeException(e);
@@ -230,6 +256,14 @@ public class CustomerServlet extends HttpServlet {
         Jsonb jsonb = JsonbBuilder.create();
         CustomerDTO customerDTO = jsonb.fromJson(req.getReader(), CustomerDTO.class);
 
+        if (customerDTO.getId() == null) {
+            resp.getWriter().write("id is required");
+        }else if (!customerDTO.getId().matches("C\\d{3}")) {
+            resp.getWriter().write("id is invalid");
+        }else {
+            resp.getWriter().write("id is valid");
+        }
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, username, password);
@@ -238,7 +272,12 @@ public class CustomerServlet extends HttpServlet {
 //            stm.setString(1, id);
             stm.setString(1, customerDTO.getId());
 
-            stm.executeUpdate();
+            int i = stm.executeUpdate();
+            if (i > 0) {
+                resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+            }else {
+                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
             throw new RuntimeException(e);
