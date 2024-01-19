@@ -1,4 +1,4 @@
-package lk.ijse.serveletfilter;
+package lk.ijse.serveletfilter.api;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,6 +12,8 @@ import java.io.IOException;
 public class CustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Customer: doGet();");
+        System.out.println("cus servelet ekt aw");
+
+        resp.getWriter().write("Hello Servlet");
     }
 }
