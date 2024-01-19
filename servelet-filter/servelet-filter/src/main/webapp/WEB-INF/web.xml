@@ -3,4 +3,41 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
+    <filter>
+        <filter-name>CORSFilter</filter-name>
+        <filter-class>lk.ijse.serveletfilter.filter.CORSFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CORSFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>securityFilter</filter-name>
+        <filter-class>lk.ijse.serveletfilter.filter.SecurityFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>securityFilter</filter-name>
+        <url-pattern>/orders</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>Filter_1</filter-name>
+        <filter-class>lk.ijse.serveletfilter.filter.Filter_1</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Filter_1</filter-name>
+        <url-pattern>/customers</url-pattern>
+        <url-pattern>/items</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>Filter_2</filter-name>
+        <filter-class>lk.ijse.serveletfilter.filter.Filter_2</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Filter_2</filter-name>
+        <url-pattern>/customers</url-pattern>
+        <url-pattern>/items</url-pattern>
+    </filter-mapping>
 </web-app>

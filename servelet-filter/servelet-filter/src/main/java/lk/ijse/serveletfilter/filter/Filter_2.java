@@ -9,11 +9,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-//@WebFilter(filterName = "CORSFilter", urlPatterns = "/*")
-public class CORSFilter extends HttpFilter {
+//@WebFilter(filterName = "Filter_2", urlPatterns = {"/customers","/items"})
+public class Filter_2 extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-        System.out.println("COSFilter");
+        System.out.println("Filter 2");
         chain.doFilter(req, res);
     }
 }

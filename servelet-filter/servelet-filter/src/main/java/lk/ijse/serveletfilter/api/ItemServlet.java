@@ -11,8 +11,8 @@ import java.io.IOException;
 public class ItemServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("item servelet ekt aw");
+        System.out.println("item servelet");
 
-        resp.getWriter().write("Ukpn Theekshana");
+        resp.getWriter().write("Item Servelet");
     }
 }

@@ -8,12 +8,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "CustomerServlet", urlPatterns = "/customers")
-public class CustomerServlet extends HttpServlet {
+@WebServlet(name = "OrderServelet", urlPatterns = "/orders")
+public class OrderServelet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("cus servelet");
+        System.out.println("order servelet");
 
-        resp.getWriter().write("Cus Servlet");
+        resp.getWriter().write("Order Servlet");
     }
 }
