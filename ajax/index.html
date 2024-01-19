@@ -8,7 +8,8 @@
         <h1>Hello-Ajax</h1>
         <p>Let's implement AJAX with XMLHttpRequest object</p>
         <h1 id="sample"></h1>
-        <button type="button" id="btn">Click Me</button>
+        <button type="button" id="btn1">Send AJAX Request</button>
+        <button type="button" id="btn2">Send AJAX with JQuery</button>
 
         <script src="js/jquery-3.7.1.min.js"></script>
         <script>
@@ -18,7 +19,7 @@
             xml.open("GET","data/data.json");
             console.log(xml.readyState,"After opening request");
 
-            $("#btn").click(function (){
+            $("#btn1").click(function (){
                 console.log(xml.readyState,"After calling readystatechange event");
                 if(xml.readyState===4 && xml.status===200){
                     // console.log(xml.readyState,"After calling readystatechange event");
@@ -29,10 +30,24 @@
                     division.text(xml.responseText);
                     $("body").append(division);
                 }
+                xml.send();
             });
 
-
-            xml.send();
+            $("#btn2").click(function (){
+                $.ajax({
+                    method:"GET",
+                    url:"data/data.json",
+                    success:function (data){
+                        console.log(data.name);
+                        let division=$("<div></div>");
+                        division.text(JSON.stringify(data));
+                        $("body").append(division);
+                    },
+                    error:function (error){
+                        console.log(error);
+                    }
+                });
+            });
 
         </script>
     </body>

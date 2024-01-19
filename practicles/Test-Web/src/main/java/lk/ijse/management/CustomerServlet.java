@@ -39,6 +39,7 @@ public class CustomerServlet extends HttpServlet {
 //        ==================this for get data=================
 
 //        Writer writer = resp.getWriter();
+        resp.addHeader("Access-Control-Allow-Origin", "*");
         Connection connection = null;
 
         try {
